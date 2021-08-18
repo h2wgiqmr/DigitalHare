@@ -1,0 +1,26 @@
+#!/bin/zsh
+
+# requirement:
+#  brew install python3
+
+RAND_YMDHMSZ=`python3 -c "import random;import datetime;print((datetime.datetime.now()-datetime.timedelta(seconds=random.randrange(7*24*60*60))).strftime('%Y-%m-%d %H:%M:%S')+' +0000')"`
+
+RAND_EMAIL_LOCALPART=`python3 -c "import random;import string;print(random.choice(string.ascii_lowercase)+''.join(random.choice(string.ascii_lowercase+string.digits)for _ in range(random.randrange(5,15))))"`
+RAND_EMAIL_DOMAIN=`python3 -c "import random;import string;print(random.choice(string.ascii_lowercase)+''.join(random.choice(string.ascii_lowercase+string.digits)for _ in range(random.randrange(5,15))))"`.com
+RAND_EMAIL="${RAND_EMAIL_LOCALPART}@${RAND_EMAIL_DOMAIN}"
+
+RAND_NAME_FIRST=`python3 -c "import random;import string;print(random.choice(string.ascii_uppercase)+''.join(random.choice(string.ascii_lowercase)for _ in range(random.randrange(5,11))))"`
+RAND_NAME_LAST=`python3 -c "import random;import string;print(random.choice(string.ascii_uppercase)+''.join(random.choice(string.ascii_lowercase)for _ in range(random.randrange(5,11))))"`
+RAND_NAME="${RAND_NAME_FIRST} ${RAND_NAME_LAST}"
+
+echo ${RAND_YMDHMSZ}
+echo ${RAND_EMAIL}
+echo ${RAND_NAME}
+
+export GIT_AUTHOR_DATE="${RAND_YMDHMSZ}"
+export GIT_AUTHOR_EMAIL="${RAND_EMAIL}"
+export GIT_AUTHOR_NAME="${RAND_NAME}"
+
+export GIT_COMMITTER_DATE="${RAND_YMDHMSZ}"
+export GIT_COMMITTER_EMAIL="${RAND_EMAIL}"
+export GIT_COMMITTER_NAME="${RAND_NAME}"

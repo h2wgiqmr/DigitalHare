@@ -1,0 +1,13 @@
+#!/bin/zsh
+
+# requirement:
+#  brew install python3
+
+RAND_USERNAME=`python3 -c "import random;import string;print(random.choice(string.ascii_lowercase)+''.join(random.choice(string.ascii_lowercase+string.digits)for _ in range(random.randrange(7,15))))"`
+
+RAND_NAME_FIRST=`python3 -c "import random;import string;print(random.choice(string.ascii_uppercase)+''.join(random.choice(string.ascii_lowercase)for _ in range(random.randrange(5,11))))"`
+RAND_NAME_LAST=`python3 -c "import random;import string;print(random.choice(string.ascii_uppercase)+''.join(random.choice(string.ascii_lowercase)for _ in range(random.randrange(5,11))))"`
+RAND_NAME="${RAND_NAME_FIRST} ${RAND_NAME_LAST}"
+
+echo ${RAND_USERNAME}
+echo ${RAND_NAME}
