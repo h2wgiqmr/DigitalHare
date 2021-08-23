@@ -11,10 +11,13 @@
 - KeePassXC
 - Git
 - Yubikey
+- Tor
 
 ## 網絡服務
 
+- LIHKG
 - ProtonMail
+- Tutanota
 - MEGA.io
 
 ## TBA
